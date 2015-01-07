@@ -1,0 +1,45 @@
+﻿<ion-view title="Quest Builder">
+    <ion-nav-buttons side="left">
+    </ion-nav-buttons>
+    <div class="bar bar-subheader">
+        <h2 class="title">Summit / Timeline</h2>
+    </div>
+    <ion-content class="has-subheader">
+        <h3>Purpose <button class="button icon-left ion-plus-round" ng-click="addField('Purpose')">Add</button></h3>
+        <h4>By completing this quest I will grow:</h4>
+        <div class="row" ng-repeat="f in purpose()" ng-if="$index % 4 == 0">
+            <div class="col col-25" ng-if="purpose()[$index+0]">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected:purpose()[$index+0].active}" ng-click="model.selectedPurpose = purpose()[$index+0]">{{ purpose()[$index+0].name }}</button>
+            </div>
+            <div class="col col-25" ng-if="purpose()[$index+1]">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected:purpose()[$index+1].active}" ng-click="model.selectedPurpose = purpose()[$index+1]">{{ purpose()[$index+1].name }}</button>
+            </div>
+            <div class="col col-25" ng-if="purpose()[$index+2]">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected:purpose()[$index+2].active}" ng-click="model.selectedPurpose = purpose()[$index+2]">{{ purpose()[$index+2].name }}</button>
+            </div>
+            <div class="col col-25" ng-if="purpose()[$index+3]">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected:purpose()[$index+3].active}" ng-click="model.selectedPurpose = purpose()[$index+3]">{{ purpose()[$index+3].name }}</button>
+            </div>
+        </div>
+        <h4>Briefy describe what is at the summit:</h4>
+        <textarea ng-model="data.description" rows="3"></textarea>
+        <h4>Briefy describe what is at the summit:</h4>
+        <div class="row">
+            <div class="col col-25">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected: data.timeframe == 'NinetyDays'}" ng-click="data.timeframe = 'NinetyDays'">90 Day</button>
+            </div>
+            <div class="col col-25">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected: data.timeframe == 'SixMonths'}" ng-click="data.timeframe = 'SixMonths'">6 Month</button>
+            </div>
+            <div class="col col-25">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected: data.timeframe == 'OneYear'}" ng-click="data.timeframe = 'OneYear'">1 Year</button>
+            </div>
+            <div class="col col-25">
+                <button class="button button-light button-small button-block button-pill" ng-class="{selected: data.timeframe == 'OwnDate'}">{{ data.estimatedDate || 'Set My Own Date' }}</button>
+            </div>
+        </div>
+        <div class="row">
+            <a ui-sref="builder.checkpoints({ questId: 1 })">Checkpoints</a>
+        </div>
+    </ion-content>
+</ion-view>

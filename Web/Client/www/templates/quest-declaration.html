@@ -1,0 +1,44 @@
+﻿<ion-view  title='<img class="revhr-header-image" src="./images/white_icon.png" />'>
+	<ion-nav-buttons side="left">
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+        <img class="title-image" ng-src="./images/user.png" />
+	</ion-nav-buttons>
+	
+    <ion-content padding="false">
+		<div class="text-center">
+            <h4>MY DECLARATION</h4>
+		</div>
+        <div class="revhr-quest-decl-arrow">
+        </div>
+        <div class="row revhr-quest-decl-info">
+            <div class="col col-25"> <img class="title-image" ng-src="./images/my_decl_img.jpg"/ style="width:75px; height:46px; "/></div>
+            <div class="col col-50 ">
+                <div>{{data.name}}</div>
+                <img class="text-left" ng-src="./images/decl_info_img.png"/>
+                <div class="revhr-quest-decl-checkin">{{ timeline() }} {{ timelineType() }}  Check-ins {{data.checkinFrequency}}</div>
+                <div class="revhr-quest-decl-maxlife">by MaximusLife</div>
+            </div>
+            <div class="col col-25 text-center revhr-quest-decl-point"><h3 class="revhr-quest-decl-point">{{data.totalPoints}}</h3> Points</div>
+        </div>
+
+            <div class="revhr-quest-decl-container">
+            <div>THIS QUEST WILL</div>
+            <div>grow my {{data.name}}.</div>
+            <div>I'M COMMITING TO</div>
+            <div>to check-in {{data.checkinFrequency}}</div>
+            <div>TO REACH SUMMIT</div>
+            <div>{{ timeline() }} {{ timelineType() }} from today</div>
+            <div>TO NOT GIVE UP</div>
+            <div>if I get behind.</div>
+            <div class="revhr-quest-decl-official">
+            This serves as your official quest declaration. Congratulations on growing your 100%
+            </div>
+            </div>
+
+        <div class="revhr-quest-declaration-button"><button ng-click="showQuestsDetail()" class="button button-small button-block button-light revhr-quest-decl-button">I'm Commited!</button></div>
+        <div class="text-center">This will serve as my e-signature. Let's go!</div>
+             
+    </ion-content>
+
+</ion-view>

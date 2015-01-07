@@ -1,0 +1,56 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <title>Maximus Life</title>
+
+      <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+
+      <script src="lib/ionic/js/ionic.bundle.js"></script>
+	  <script src="lib/ionic/js/angular/angular-resource.js"></script>
+
+	  <!-- Cordova Script file. (This will be a 404 during development.) -->
+      <script src="cordova.js"></script>
+
+      <!-- Application specific script files. -->
+      <script src="js/app.js"></script>
+      <script src="js/controllers.js"></script>
+      <script src="js/services.js"></script>
+      <script src="js/directives.js"></script>
+    </head>
+    <body ng-app="maximuslife" animation="slide-left-right">
+		<div ng-controller="NavController">
+			<ion-side-menus>
+				<!-- Center content -->
+				<ion-pane ion-side-menu-content drag-content="false">
+					<ion-nav-bar>
+						<ion-nav-buttons side="left">
+							<ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">
+								{{getBackBtnTitle() || 'Back'}}
+							</ion-nav-back-button>
+						</ion-nav-buttons>
+					</ion-nav-bar>
+					<ion-nav-view></ion-nav-view>
+				</ion-pane>
+
+				<!-- Left Side Menu -->
+				<ion-side-menu side="left">
+					<ion-header-bar class="bar bar-header bar-stable">
+						<h1 class="title">Menu</h1>
+					</ion-header-bar>
+					<ion-content>
+						<ion-list>
+							<ion-item ng-click="goTo(item.link)" class="item item-icon-left" ng-repeat="item in menuItems">
+								<i ng-class="item.iconClass"></i>
+								{{item.text}}
+							</ion-item>
+						</ion-list>
+					</ion-content>
+				</ion-side-menu>
+			</ion-side-menus>
+		</div>
+    </body>
+  </html>

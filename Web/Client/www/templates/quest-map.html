@@ -1,0 +1,92 @@
+<ion-view title="Quest Map">
+	<ion-nav-buttons side="left">
+        <!--<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>-->
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+        <img class="title-image" ng-src="./images/user.png" />
+	</ion-nav-buttons>
+	
+    <ion-content padding="false" >
+       <div id="renhr-quest-map-image">
+           <div class="revhr-quest-map-details">
+           <div>{{data.name}}</div>
+           <div>~Check-ins: 3x {{data.checkinFrequency}}</div>
+           </div>
+           <div class="revhr-quest-map-sponser row">
+               <div class="revhr-quest-map-sponser-circle"><div>+1 Sponser</div></div>
+               <div>Featured Sponsor: Roma Boots</div>
+           </div>
+       </div>
+        <div class="row" style="padding:0">
+            <div class="col col-80 quest-map-checkin">                
+                <div >Check-in</div>
+                <div class="revhr-quest-map-next-checkin">{{nextCheckin()}} Day to Check-in</div>                       
+            </div>
+            <div class="col col-20 revhr-quest-map-button-showcheckin"ng-click="showCheckIn()">
+                <img ng-src="./images/checkin-add.png" />
+            </div>
+        </div>
+
+        <!-- Map, Pulse, TimeLine & Activit Feed - BEGIN -->
+        <div class="revhr-questmap-chart">
+            <div>
+                <div ng-show="chartType == 'pulse'">{{ missedCheckins() }}</div>
+                <div ng-show="chartType == 'timeline'">Your next check-in is in {{nextCheckin()}} Days</div>
+                <div ng-show="chartType == 'pulse'">
+                    <div>Last check-in</div>
+                    <div>{{data.daysSinceLastCheckin}} days ago</div>
+                </div>
+            </div>
+
+			<div ui-view name="chartView"></div>
+
+            <div>
+                <button class="button-clear" ng-class="{active: chartType == 'map'}" ng-click="showGraph('map')"><b>Map</b></button>
+				<button class="button-clear" ng-class="{active: chartType == 'pulse'}"  ng-click="showGraph('pulse')"><b>Pulse</b></button>
+				<button class="button-clear" ng-class="{active: chartType == 'timeline'}"  ng-click="showGraph('timeline')"><b>TimeLine</b></button>
+            </div>
+        </div>
+        <!-- Map, Pulse, TimeLine & Activit Feed - END -->
+
+        <div class="revhr-questmap-list">
+            <div>
+                <div>{{data.daysLeft}}</div>
+                <div>Days to summit</div>
+            </div>
+            <div>
+                <div>{{data.percentCompleted}}%</div>
+                <div>to Summit</div>
+            </div>
+            <div>
+                <div>{{data.assistCount}}/{{data.feedbackCount}}</div>
+                <div>Assist/Feedback</div>
+            </div>
+            <div>
+                <div>{{data.pointsWon}}</div>
+                <div>Points</div>
+            </div>
+        </div>
+        
+		<ion-list>
+			<ion-item class="item item-icon-right">
+				Weekly Stats&nbsp;: &nbsp;&nbsp;
+                <img ng-repeat="n in range(data.checkinsActual)" ng-src="./images/ok.png"/>
+                <img ng-repeat="n in range(data.checkinsExpected - data.checkinsActual)" ng-src="./images/no.png"/>
+			</ion-item>
+			<ion-item class="item item-icon-right">
+                <div style="float: left;">
+				    Assets &nbsp;: &nbsp;&nbsp;
+                </div>
+                <div style="float: left;">
+                    <img class="title-image" ng-src="./images/allies.png"/>
+                </div>
+			</ion-item>
+            <ion-item ng-click="" class="item item-icon-right">
+                Quest Options
+                <i class="icon ion-arrow-right-b"></i>
+            </ion-item>
+		</ion-list>
+		
+    </ion-content>
+
+</ion-view>	

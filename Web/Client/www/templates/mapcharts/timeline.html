@@ -1,0 +1,11 @@
+<div ng-init="count=10">
+	<ion-scroll zooming="true" direction="x">
+		<div class="revhr-questmap-timeline-container">
+			<div class="revhr-questmap-timeline" ng-repeat="item in data.checkins | orderBy:'sortOrder'">
+				<div class="revhr-questmap-timeline-checkinactual" ng-class="($index >= (count - item.count)) ? 'revhr-plot-actualcheckin' : '' " ng-repeat="n in range(count)">
+				</div>
+				<div class="revhr-questmap-timeline-checkinactual-date">{{formatedEndDate(item.beginDate)}}</div>
+			</div>
+	  </div>
+	</ion-scroll>
+</div>

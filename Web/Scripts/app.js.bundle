@@ -1,0 +1,4 @@
+﻿#options skipremin
+jquery-1.11.0.min.js
+bootstrap.min.js
+knockout-3.0.0.js

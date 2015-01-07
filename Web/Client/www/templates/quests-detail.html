@@ -1,0 +1,210 @@
+<ion-view  title='<img class="revhr-header-image" src="./images/white_icon.png" />'>
+    <ion-nav-buttons side="left">
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="right">
+        <img class="title-image" ng-src="./images/join_quest.png" style="height: 25px; margin-top: 4px;" ng-click="showJointQuest()" />
+    </ion-nav-buttons>-->
+
+    <ion-content padding="false">
+        <div class="text-right">{{data.totalPoints}} pts</div>
+        <div class="text-center" style="color:white">
+            <div class="row">
+                <div class="col">&nbsp;</div>
+                <div class="col-60">
+                    <div> {{data.name}}</div>
+                </div>
+                <div class="col">&nbsp;</div>
+            </div>
+
+            <div class="row">
+                <div class="col col-center">
+                    <div class="revhr-quest-detail">{{ (data.checkpoints | filter:{deleted:false}).length }}</div>
+                    <div>Checkpoints</div>
+                </div>
+                <div class="col col-center">
+                    <div> <img class="revhr-quest-image" ng-src="{{data.imageUrl}}" /> </div>
+                </div>
+                <div class="col col-center">
+                    <div class="revhr-quest-detail">{{data.checkinFrequency}}</div>
+                    <div>Check-ins</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-center"></div>
+                <div class="col col-center">
+                    <div class="revhr-quest-detail">{{ timeline() }}</div>
+                    <div>{{ timelineType() }} to Summit</div>
+                </div>
+                <div class="col col-center">
+                    <button class="button-small button-block button-light revhr-button-get-started" ng-click="showMap()">Get Started!</button>
+                </div>             
+            </div>
+        </div>
+
+        <div class="revhr-quest-desc">
+            <div>Question Description:</div>
+            <ion-scroll>
+                <div>{{data.description}}</div>
+            </ion-scroll>
+        </div>
+        <ion-list>
+            <!-- Submit BEGIN -->
+            <ion-item ng-click="toggleGroup('Purpose')" ng-class="{active: isGroupShown('Purpose')}">
+                <i class="icon" ng-class="isGroupShown('Purpose') ? 'ion-minus' : 'ion-plus'"></i> Summit&nbsp;:&nbsp;{{ selectedPurpose() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('Purpose')">
+                <ion-radio name="purpose" ng-repeat="field in data.fields | filter:{type:'Purpose'}" ng-model="model.selectedPurpose" ng-value="field">{{ field.name }}</ion-radio>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter quest purpose">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('Purpose')">Add</button>
+                </div>
+            </ion-item>
+
+            <!-- Completion Timeframe BEGIN -->
+            <ion-item ng-click="toggleGroup('CompletionTimeframe')" ng-class="{active: isGroupShown('CompletionTimeframe')}">
+                <i class="icon" ng-class="isGroupShown('CompletionTimeframe') ? 'ion-minus' : 'ion-plus'"></i> CompletionTimeframe&nbsp;:&nbsp;{{ timeline() + ' ' + timelineType() }}
+            </ion-item>
+
+            <ion-item class="item-accordion" ng-show="isGroupShown('CompletionTimeframe')">
+                <div>
+                    <ion-radio name="timeframe" ng-model="data.timeframe" ng-value="'NinetyDays'">NinetyDays</ion-radio>
+                    <ion-radio name="timeframe" ng-model="data.timeframe" ng-value="'SixMonths'">SixMonths</ion-radio>
+                    <ion-radio name="timeframe" ng-model="data.timeframe" ng-value="'OneYear'">OneYear</ion-radio>
+                </div>
+
+                <div class="item item-input-inset">
+                    <label class="item item-input">
+                        <input type="text" ng-model="data.estimatedDate" placeholder="Enter own date">
+                    </label>
+                </div>
+            </ion-item>
+
+            <!-- Checkin Frequency BEGIN -->
+            <ion-item ng-click="toggleGroup('checkinFrequency')" ng-class="{active: isGroupShown('checkinFrequency')}">
+                <i class="icon" ng-class="isGroupShown('checkinFrequency') ? 'ion-minus' : 'ion-plus'"></i> CheckinFrequency&nbsp;:&nbsp;{{ checkinFrequencyDescription() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('checkinFrequency')">
+                <ion-radio name="checkinFrequency" ng-model="data.checkinFrequency" ng-value="'Weekly'">Weekly</ion-radio>
+                <ion-radio name="checkinFrequency" ng-model="data.checkinFrequency" ng-value="'Monthly'">Monthly</ion-radio>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper col-20">
+                        <input type="text" ng-model="data.checkinsExpected">
+                    </label>
+                    &nbsp;checkins expected
+                </div>
+            </ion-item>
+
+            <!-- Check-in BEGIN -->
+            <ion-item ng-click="toggleGroup('CheckinType')" ng-class="{active: isGroupShown('CheckinType')}">
+                <i class="icon" ng-class="isGroupShown('CheckinType') ? 'ion-minus' : 'ion-plus'"></i> Check-in&nbsp;:&nbsp;{{ selectedCheckinTypes() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('CheckinType')">
+                <ion-checkbox ng-repeat="field in data.fields | filter:{type:'CheckinType'}" ng-model="field.active">{{ field.name }}</ion-checkbox>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter checkin type">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('CheckinType')">Add</button>
+                </div>
+            </ion-item>
+
+            <!-- Checkpoints BEGIN -->
+            <ion-item ng-click="toggleGroup('checkPoints')" ng-class="{active: isGroupShown('checkPoints')}">
+                <i class="icon" ng-class="isGroupShown('checkPoints') ? 'ion-minus' : 'ion-plus'"></i> Checkpoints&nbsp;:&nbsp;{{ (data.checkpoints | filter:{deleted:false}).length }}
+            </ion-item>
+
+            <ion-item class="item-accordion" ng-show="isGroupShown('checkPoints')" ng-repeat="checkpoint in data.checkpoints | filter:{deleted:false}" ng-click="showCheckpointModal(checkpoint, $index + 1)">
+                {{ $index + 1 }} - {{ checkpoint.name }} - {{ checkpoint.estimatedDate }}
+            </ion-item>
+
+            <ion-item class="item-accordion item-button-right" ng-show="isGroupShown('checkPoints')">
+                Add New Checkpoint
+                <button class="button button-balanced" ng-click="showCheckpointModal(null, -1)">
+                    <i class="icon ion-plus"></i>
+                </button>
+            </ion-item>
+
+            <ion-item ng-click="toggleGroup('Metric')" ng-class="{active: isGroupShown('Metric')}">
+                <i class="icon" ng-class="isGroupShown('Metric') ? 'ion-minus' : 'ion-plus'"></i> Metrics&nbsp;:&nbsp;{{ selectedMetrics() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('Metric')">
+                <ion-checkbox ng-repeat="field in data.fields | filter:{type:'Metric'}" ng-model="field.active">{{ field.name }}</ion-checkbox>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter metric">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('Metric')">Add</button>
+                </div>
+            </ion-item>
+
+            <!--<ion-item>
+                Frequency&nbsp;:&nbsp;{{ checkinFrequencyDescription() }}
+            </ion-item>-->
+
+            <ion-item ng-click="toggleGroup('Pitfall')" ng-class="{active: isGroupShown('Pitfall')}">
+                <i class="icon" ng-class="isGroupShown('Pitfall') ? 'ion-minus' : 'ion-plus'"></i> Potential Pitfalls&nbsp;:&nbsp;{{ selectedPitfalls() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('Pitfall')">
+                <ion-checkbox ng-repeat="field in data.fields | filter:{type:'Pitfall'}" ng-model="field.active">{{ field.name }}</ion-checkbox>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter pitfall">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('Pitfall')">Add</button>
+                </div>
+            </ion-item>
+
+            <ion-item ng-click="toggleGroup('Asset')" ng-class="{active: isGroupShown('Asset')}">
+                <i class="icon" ng-class="isGroupShown('Asset') ? 'ion-minus' : 'ion-plus'"></i> Assests&nbsp;:&nbsp;{{ selectedAssets()}}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('Asset')">
+                <ion-checkbox ng-repeat="field in data.fields | filter:{type:'Asset'}" ng-model="field.active">{{ field.name }}</ion-checkbox>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter asset">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('Asset')">Add</button>
+                </div>
+            </ion-item>
+
+            <ion-item ng-click="toggleGroup('App')" ng-class="{active: isGroupShown('App')}">
+                <i class="icon" ng-class="isGroupShown('App') ? 'ion-minus' : 'ion-plus'"></i> Synced Apps&nbsp;:&nbsp;{{ selectedApps() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('App')">
+                <ion-checkbox ng-repeat="field in data.fields | filter:{type:'App'}" ng-model="field.active">{{ field.name }}</ion-checkbox>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter app">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('App')">Add</button>
+                </div>
+            </ion-item>
+
+            <ion-item ng-click="toggleGroup('Device')" ng-class="{active: isGroupShown('Device')}">
+                <i class="icon" ng-class="isGroupShown('Device') ? 'ion-minus' : 'ion-plus'"></i> Synced Devices&nbsp;:&nbsp;{{ selectedDevices() }}
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown('Device')">
+                <ion-checkbox ng-repeat="field in data.fields | filter:{type:'Device'}" ng-model="field.active">{{ field.name }}</ion-checkbox>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="model.newField" placeholder="Enter device">
+                    </label>
+                    <button class="button button-small" ng-disabled="!model.newField.length" ng-click="addField('Device')">Add</button>
+                </div>
+            </ion-item>
+            <ion-item>
+                Alignment&nbsp;:&nbsp;
+            </ion-item>
+            <ion-item>
+                Use This Quest as Template
+            </ion-item>
+            <ion-item>
+                <a ui-sref="builder.timeline({ questId: 1 })">Timeline</a>
+            </ion-item>
+           
+        </ion-list>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="Quest Builder" hide-back-button="true">
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<img class="title-image" ng-src="./images/user.png"/>
+	</ion-nav-buttons>
+    <ion-content padding="false">
+		<div class="row" style="flex-wrap:wrap; -webkit-flex-wrap: wrap;">
+			<div class="col-50" ng-repeat="side in ['left', 'right']">
+				<div class="list card" ng-if="(side=='left' && $odd==false) || (side=='right' && $odd==true)" 
+				   ng-repeat="item in data.categories | orderBy:'sortOrder'" ng-click="showChildCategories(item.id)">
+					<div class="item item-image" style="height: 120px;">
+						<img ng-src={{item.imageUrl}}>
+					</div>
+					<div class="item">
+						{{item.name}}
+					 </div>
+				</div>
+			</div>
+		</div>
+    </ion-content>
+</ion-view>

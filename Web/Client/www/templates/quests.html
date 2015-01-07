@@ -1,0 +1,56 @@
+<ion-view title="{{data.name}}">
+   <ion-nav-buttons side="left">
+   </ion-nav-buttons>
+   <ion-nav-buttons side="right">
+       <img class="title-image" ng-src="./images/user.png" />
+   </ion-nav-buttons>
+   <ion-content padding="false">
+      <div>
+         <div class="row">
+            <div ng-click="show=false" style="cursor:pointer"> List </div>&nbsp;<div ng-click="show=true" style="cursor:pointer"> Grid </div>
+         </div>
+         <div class="text-center">
+            <div>
+               <h4>{{data.name}}</h4>
+            </div>
+
+            <div class="row">
+               <div class="col col-20">&nbsp;</div>
+               <div class="col col-60">
+                  <ion-scroll>
+                     <p class="revhr-desc-container"> {{data.description}}</p>
+                  </ion-scroll>
+               </div>
+               <div class="col col-20">&nbsp;</div>
+            </div>
+
+            <div>
+               <img ng-src="{{data.imageUrl}}"/>
+            </div>
+
+         </div>
+      </div>
+      <ion-list ng-hide="show">
+         <ion-item ng-repeat="item in data.quests" ng-click="showJointQuest(item.id)" class="item item-icon-right">
+            {{item.name}}
+            <i class="icon ion-arrow-right-b"></i>
+         </ion-item>
+      </ion-list>
+      <div class="row" style="flex-wrap:wrap; -webkit-flex-wrap: wrap;" ng-show="show">
+         <div class="col-50" ng-repeat="side in ['left', 'right']">
+            <div class="list card" style="margin: 4px !important;" ng-if="(side=='left' && $odd==false) || (side=='right' && $odd==true)" 
+               ng-repeat="item in data.quests | orderBy:'sortOrder'">
+                <div class="item item-image" style="height: 80px; line-height: 78px; padding-left: 5px; padding-right: 5px;" ng-click="showJoinQuest(item.id)">
+                    {{item.name}}
+                </div>
+            </div>
+         </div>
+      </div>
+      <ion-list>
+         <ion-item class="item item-icon-right" ng-click="showQuestBuilder()">
+            Start My Own Using Template
+            <i class="icon ion-arrow-right-b"></i>
+         </ion-item>
+      </ion-list>
+   </ion-content>
+</ion-view>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Knockout / Service Stack Demo</title>
+	@if (Request.IsLocal)
+ {
+		@Html.RenderCssBundle("~/Content/app.css.bundle", BundleOptions.Normal)
+ }
+ else
+ {
+		@Html.RenderCssBundle("~/Content/app.css.bundle", BundleOptions.MinifiedAndCombined)
+ }
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<div class="container">
+		@RenderBody()
+	</div>
+
+	@if (Request.IsLocal)
+ {
+		@Html.RenderJsBundle("~/Scripts/app.js.bundle", BundleOptions.Normal)
+ }
+ else
+ {
+		@Html.RenderJsBundle("~/Scripts/app.js.bundle", BundleOptions.MinifiedAndCombined)
+ }
+
+	<script data-main="/Scripts/main" src="~/Scripts/require.js"></script>
+	@RenderSection("Javascript", required: false)
+
+</body>
+</html>

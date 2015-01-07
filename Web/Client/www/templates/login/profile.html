@@ -1,0 +1,70 @@
+<ion-view title="Quest Builder" hide-nav-bar="true">
+	<ion-content>
+        <form name="profileform" novalidate>
+            <div class="revhr-profile-container">
+                <!-- ROW 1-->
+                <div class="row">
+                    <div class="col">
+                        &nbsp;
+                    </div>
+                </div>
+                <!-- ROW 2 - Heading-->
+                <div class="row">
+                    <div class="col">
+                        Tackle <br />Anything
+                    </div>
+                </div>
+
+                <!-- ROW 3 - LIST-->
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" name="name" placeholder="My full name is..." ng-model="model.fullName" required>
+                    </label>
+                    <p ng-show="profileform.name.$error.required && submitted" class="error-message revhr-login">Required field</p>
+                    <label class="item item-input">
+                        <input name="mobile" type="number" placeholder="My mobile number is..." ng-model="model.mobileNumber" required>
+                    </label>
+                    <p ng-show="profileform.mobile.$error.required && submitted" class="error-message revhr-login">Required field</p>
+                    <div>Your wireless provider may offer a longer free trial.</div>
+                    <label class="item item-input">
+                        <input type="text" ng-model="model.employer" placeholder="My Employer is...">
+                    </label>
+                    <div>Your employer may unlock rewards for you.</div>
+                </div>
+
+                <!-- ROW 4-->
+                <div class="row">
+                    <div>My Birthday :</div>
+                    <div>
+                        <input ng-model="model.birthDay" type="date" placeholder="MM/DD/YYYY">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>I'm a :</div>
+                    <div>
+                        <select ng-model="model.gender" name="gender" required>
+                            <option selected>Select a gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                        <p ng-show="model.gender == 'Select a gender' && submitted" class="error-message revhr-login-gender">Required field</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    &nbsp;
+                </div>
+
+                <!-- ROW 5 - Buttons-->
+                <div class="row">
+                    <div class="col">
+                        <button class="button button-small button-block button-light revhr-reglogin-button" ng-click="showCredentialRegPage(profileform.$valid)">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+</ion-content>
+</ion-view>

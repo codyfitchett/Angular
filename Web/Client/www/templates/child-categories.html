@@ -1,0 +1,62 @@
+<ion-view title="{{data.name}}">
+   <ion-nav-buttons side="left">
+   </ion-nav-buttons>
+   <ion-nav-buttons side="right">
+      <img class="title-image" ng-src="./images/header.png"/>
+   </ion-nav-buttons>
+   <ion-content padding="false">
+
+      <div class="revhr-childcat-container">
+          <div class="row">
+              <div class="left-arrow col-10" ng-click="showLeftSubCategory()">
+                  <img src="./images/l_active.png" ng-show="currentSubCategoryIndex > 0">
+                  <img src="./images/l_disable.png" ng-show="currentSubCategoryIndex <= 0">
+              </div>
+              <div class="center-text col-80"> {{data.childCategories[currentSubCategoryIndex < 0 ? 0 : currentSubCategoryIndex].name}}</div>
+              <div class="right-arrow col-10" style="cursor: pointer;" ng-click="showRightSubCategory()">
+                  <img src="./images/r_active.png" ng-show="currentSubCategoryIndex < 0 || (currentSubCategoryIndex >= 0 && currentSubCategoryIndex != data.childCategories.length - 1)">
+                  <img src="./images/r_disable.png" ng-show="currentSubCategoryIndex == data.childCategories.length - 1"> 
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-50" ng-repeat="side in ['left', 'right']">
+                  <div class="quest-list list card" ng-class-odd="'border-right border-bottom'" ng-class-even="'border-bottom'" ng-if="(side=='left' && $odd==false) || (side=='right' && $odd==true)"
+                       ng-repeat="item in questData.quests | orderBy:'sortOrder'" ng-click="showJoinQuest(item.id)">
+
+                      <div class="quest-image item item-image">
+                          <img ng-src={{item.imageUrl}}>
+                          <div>+1</div>
+                      </div>
+                      <div class="quest-desc item">
+                          <div class="quest-heading" title="{{item.name}}">
+                              {{item.name}}
+                          </div>
+                          <div class="quest-info">
+                              <span>
+                                  {{timeline(item)}} {{timelineType(item)}}
+                              </span>
+                              <span>
+                                  {{item.checkinFrequency}} Check-ins
+                              </span>
+                          </div>
+                          <div class="quest-user">
+                              <div>
+                                <img src="./images/user.png" />
+                             </div>
+                              <div>
+                                  <div>Quest By</div>
+                                  <div>MaximusLife</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row" ng-show="questData.quests.length > 0">
+              <img src="./images/quests_bottom.png" />
+          </div>
+      </div>
+   </ion-content>
+</ion-view>

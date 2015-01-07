@@ -1,0 +1,52 @@
+<ion-view title="Quest Builder" hide-nav-bar="true">
+	<ion-content>
+        <form name="loginform" novalidate>
+            <div class="revhr-login-container">
+                <!-- ROW 1-->
+                <div class="row">
+                    <div class="col">
+                        &nbsp;
+                    </div>
+                </div>
+                <!-- ROW 2 - Heading-->
+                <div class="row">
+                    <div class="col">
+                        <div class="revhr-start-head">
+                            Maximus <span>Life</span>
+                        </div>
+
+                        <div class="revhr-start-head-desc">
+                            maximus: derived from latin for <br />"greatest"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 3 - LIST-->
+                <div class="list">
+                    <label class="item item-input">
+                        <input name="name" type="text" ng-model="model.userName" placeholder="Username" required>
+                    </label>
+                    <p ng-show="loginform.name.$error.required && submitted" class="error-message revhr-login">Required field</p>
+                    <label class="item item-input">
+                        <input name="password" type="Password" ng-model="model.password" placeholder="Password" required>
+                    </label>
+                    <p ng-show="loginform.password.$error.required && submitted" class="error-message revhr-login">Required field</p>
+                    <div style="text-align: right; padding-right: 18px;">Forgot password?</div>
+                </div>
+
+                <div class="row">
+                    &nbsp;
+                </div>
+
+                <!-- ROW 5 - Buttons-->
+                <div class="row">
+                    <div class="col">
+                        <button class="button button-small button-block button-light revhr-reglogin-button" ng-click="showCategoryPage(loginform.$valid)">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+	</ion-content>
+</ion-view>

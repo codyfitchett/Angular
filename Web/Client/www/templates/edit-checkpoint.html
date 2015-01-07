@@ -1,0 +1,36 @@
+﻿<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title" ng-if="model.checkpoint.isNew">Add Checkpoint</h1>
+        <h1 class="title" ng-if="!model.checkpoint.isNew">Edit Checkpoint {{ model.checkpoint.sequence }}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form name="addnewcheckpointForm" novalidate>
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input name="name" type="text" ng-model="model.checkpoint.name" required>
+                </label>
+                <p ng-show="addnewcheckpointForm.name.$error.required && !addnewcheckpointForm.name.$pristine" class="error-message quest-details">Required field</p>
+                <label class="item item-input">
+                    <span class="input-label">Percent</span>
+                    <input name="percent" type="number" min="1" ng-model="model.checkpoint.percent" required>
+                </label>
+                <p ng-show="addnewcheckpointForm.percent.$error.number" class="error-message quest-details">Only numbers are allowed</p>
+                <p ng-show="!addnewcheckpointForm.percent.$pristine && addnewcheckpointForm.percent.$invalid && !addnewcheckpointForm.percent.$error.number" class="error-message quest-details">Required field</p>
+                <label class="item item-input">
+                    <span class="input-label">Estimated date</span>
+                    <input name="estimateddate" type="date" ng-model="model.checkpoint.estimatedDate" required>
+                </label>
+                <p ng-show="!addnewcheckpointForm.estimateddate.$pristine && addnewcheckpointForm.estimateddate.$invalid && !addnewcheckpointForm.estimateddate.$error.number" class="error-message quest-details">Required field</p>
+                <button ng-disabled="addnewcheckpointForm.$invalid" class="button button-block button-balanced" ng-click="saveCheckpoint()">
+                    <span ng-if="model.checkpoint.isNew">Add Checkpoint</span>
+                    <span ng-if="!model.checkpoint.isNew">Save Checkpoint</span>
+                </button>
+                <button class="button button-block button-assertive" ng-click="showPopup('Are you sure you want to delete the selected checkpoint?')" ng-if="!model.checkpoint.isNew">
+                    Delete Checkpoint
+                </button>
+                <button class="button button-block button-light" ng-click="closeCheckpointModal()">Cancel</button>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-modal-view>

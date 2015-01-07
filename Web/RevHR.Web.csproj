@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CF68744-8048-4C05-93CC-655116E838DD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RevHR.Web</RootNamespace>
+    <AssemblyName>RevHR.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ServiceStack, Version=3.9.67.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.3.9.67\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=3.9.70.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Common.3.9.70\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Common.3.9.70\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=3.9.70.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.OrmLite.Sqlite32.3.9.70\lib\net40\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=3.9.67.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.3.9.67\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Razor, Version=3.9.67.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Razor.3.9.67\lib\net40\ServiceStack.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=3.9.67.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Redis.3.9.67\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=3.9.67.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.3.9.67\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.70.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Text.3.9.70\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor.Unofficial">
+      <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Client\www\css\style.css" />
+    <Content Include="Client\www\demo.html" />
+    <Content Include="Client\www\images\allies.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\button.png" />
+    <Content Include="Client\www\images\check-in.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\checkin-add.png" />
+    <Content Include="Client\www\images\decl_info_img.png" />
+    <Content Include="Client\www\images\emblem_l.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\emblem_s.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\hdpi\categories\healthfitness.png" />
+    <Content Include="Client\www\images\hdpi\categories\justforfun.png" />
+    <Content Include="Client\www\images\hdpi\categories\personalgreateness.png" />
+    <Content Include="Client\www\images\hdpi\categories\sponsoredquest.png" />
+    <Content Include="Client\www\images\hdpi\categories\workcareer.png" />
+    <Content Include="Client\www\images\hdpi\pushups.jpg" />
+    <Content Include="Client\www\images\header.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\image.png" />
+    <Content Include="Client\www\images\join_quest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\ldpi\categories\healthfitness.png" />
+    <Content Include="Client\www\images\ldpi\categories\justforfun.png" />
+    <Content Include="Client\www\images\ldpi\categories\personalgreateness.png" />
+    <Content Include="Client\www\images\ldpi\categories\sponsoredquest.png" />
+    <Content Include="Client\www\images\ldpi\categories\workcareer.png" />
+    <Content Include="Client\www\images\ldpi\pushups.jpg" />
+    <Content Include="Client\www\images\login\plusone-large.png" />
+    <Content Include="Client\www\images\login\plusone-small.png" />
+    <Content Include="Client\www\images\login\rounded-hills.png" />
+    <Content Include="Client\www\images\l_active.png" />
+    <Content Include="Client\www\images\l_disable.png" />
+    <Content Include="Client\www\images\map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\mdpi\categories\healthfitness.png" />
+    <Content Include="Client\www\images\mdpi\categories\justforfun.png" />
+    <Content Include="Client\www\images\mdpi\categories\personalgreateness.png" />
+    <Content Include="Client\www\images\mdpi\categories\sponsoredquest.png" />
+    <Content Include="Client\www\images\mdpi\categories\workcareer.png" />
+    <Content Include="Client\www\images\mdpi\pushups.jpg" />
+    <Content Include="Client\www\images\my_decl_img.jpg" />
+    <Content Include="Client\www\images\no.png" />
+    <Content Include="Client\www\images\ok.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\phone-case.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\puls.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\purpose.png" />
+    <Content Include="Client\www\images\quests_bottom.png" />
+    <Content Include="Client\www\images\r_active.png" />
+    <Content Include="Client\www\images\r_disable.png" />
+    <Content Include="Client\www\images\timeline.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\www\images\trash.png" />
+    <Content Include="Client\www\images\user.png" />
+    <Content Include="Client\www\images\white_icon.png" />
+    <Content Include="Client\www\images\xhdpi\categories\healthfitness.png" />
+    <Content Include="Client\www\images\xhdpi\categories\justforfun.png" />
+    <Content Include="Client\www\images\xhdpi\categories\personalgreateness.png" />
+    <Content Include="Client\www\images\xhdpi\categories\sponsoredquest.png" />
+    <Content Include="Client\www\images\xhdpi\categories\workcareer.png" />
+    <Content Include="Client\www\images\xhdpi\pushups.jpg" />
+    <Content Include="Client\www\index - Copy.html" />
+    <Content Include="Client\www\index.html" />
+    <Content Include="Client\www\js\app.js" />
+    <Content Include="Client\www\js\controllers.js" />
+    <Content Include="Client\www\js\directives.js" />
+    <Content Include="Client\www\js\index.html" />
+    <Content Include="Client\www\js\services.js" />
+    <Content Include="Client\www\lib\ionic\css\ionic.css" />
+    <Content Include="Client\www\lib\ionic\css\ionic.min.css" />
+    <Content Include="Client\www\lib\ionic\fonts\ionicons.svg" />
+    <Content Include="Client\www\lib\ionic\js\angular-ui\angular-ui-router.js" />
+    <Content Include="Client\www\lib\ionic\js\angular-ui\angular-ui-router.min.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular-animate.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular-animate.min.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular-resource.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular-resource.min.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular-sanitize.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular-sanitize.min.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular.js" />
+    <Content Include="Client\www\lib\ionic\js\angular\angular.min.js" />
+    <Content Include="Client\www\lib\ionic\js\ionic-angular.js" />
+    <Content Include="Client\www\lib\ionic\js\ionic-angular.min.js" />
+    <Content Include="Client\www\lib\ionic\js\ionic.bundle.js" />
+    <Content Include="Client\www\lib\ionic\js\ionic.bundle.min.js" />
+    <Content Include="Client\www\lib\ionic\js\ionic.js" />
+    <Content Include="Client\www\lib\ionic\js\ionic.min.js" />
+    <Content Include="Client\www\templates\builder-checkpoints.html" />
+    <Content Include="Client\www\templates\builder-timeline.html" />
+    <Content Include="Client\www\templates\builder.html" />
+    <Content Include="Client\www\templates\edit-checkpoint.html" />
+    <Content Include="Client\www\templates\login\login.html" />
+    <Content Include="Client\www\templates\login\credential.html" />
+    <Content Include="Client\www\templates\login\profile.html" />
+    <Content Include="Client\www\templates\login\landing.html" />
+    <Content Include="Client\www\templates\categories.html" />
+    <Content Include="Client\www\templates\checkin.html" />
+    <Content Include="Client\www\templates\child-categories.html" />
+    <Content Include="Client\www\templates\login\regsuccess.html" />
+    <Content Include="Client\www\templates\login\start.html" />
+    <Content Include="Client\www\templates\mapcharts\map.html" />
+    <Content Include="Client\www\templates\mapcharts\pulse.html" />
+    <Content Include="Client\www\templates\mapcharts\timeline.html" />
+    <Content Include="Client\www\templates\quest-declaration.html" />
+    <Content Include="Client\www\templates\quest-map.html" />
+    <Content Include="Client\www\templates\join-quest.html" />
+    <Content Include="Client\www\templates\quests.html" />
+    <Content Include="Client\www\templates\quests-detail.html" />
+    <Content Include="Content\app.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\site.css" />
+    <Content Include="README.txt" />
+    <Content Include="Scripts\app.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\app.css.bundle" />
+    <Content Include="Scripts\app.js.bundle" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\cart.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.map" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\knockout-3.0.0.debug.js" />
+    <Content Include="Scripts\knockout-3.0.0.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppHost.cs" />
+    <Compile Include="Bundler.cs" />
+    <Compile Include="Domain\Ally.cs" />
+    <Compile Include="Domain\CheckinStats.cs" />
+    <Compile Include="Domain\CheckinVerification.cs" />
+    <Compile Include="Domain\Checkpoint.cs" />
+    <Compile Include="Domain\DbExtensions.cs" />
+    <Compile Include="Domain\Enums.cs" />
+    <Compile Include="Domain\Quest.cs" />
+    <Compile Include="Domain\QuestActivity.cs" />
+    <Compile Include="Domain\QuestCategory.cs" />
+    <Compile Include="Domain\QuestField.cs" />
+    <Compile Include="Domain\QuestSponsor.cs" />
+    <Compile Include="DTO\CheckinDto.cs" />
+    <Compile Include="DTO\CheckpointDto.cs" />
+    <Compile Include="DTO\Mobile\ListBuilderCategories.cs" />
+    <Compile Include="DTO\Mobile\GetProfile.cs" />
+    <Compile Include="DTO\Mobile\GetQuest.cs" />
+    <Compile Include="DTO\Mobile\GetBuilderCategory.cs" />
+    <Compile Include="DTO\Mobile\PostCheckin.cs" />
+    <Compile Include="DTO\QuestDto.cs" />
+    <Compile Include="DTO\QuestFieldDto.cs" />
+    <Compile Include="Services\QuestService.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServer2008Dialect.cs" />
+    <Compile Include="Util\CollectionExtensions.cs" />
+    <Compile Include="Util\ConvertExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Client\www\lib\ionic\fonts\ionicons.eot" />
+    <Content Include="Client\www\lib\ionic\fonts\ionicons.ttf" />
+    <Content Include="Client\www\lib\ionic\fonts\ionicons.woff" />
+    <Content Include="Client\www\lib\ionic\scss\ionic.scss" />
+    <Content Include="Client\www\lib\ionic\scss\ionicons\ionicons.scss" />
+    <Content Include="Client\www\lib\ionic\scss\ionicons\_ionicons-animation.scss" />
+    <Content Include="Client\www\lib\ionic\scss\ionicons\_ionicons-font.scss" />
+    <Content Include="Client\www\lib\ionic\scss\ionicons\_ionicons-icons.scss" />
+    <Content Include="Client\www\lib\ionic\scss\ionicons\_ionicons-variables.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_action-sheet.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_animations.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_backdrop.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_badge.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_bar.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_button-bar.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_button.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_checkbox.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_form.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_grid.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_items.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_list.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_loading.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_menu.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_mixins.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_modal.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_platform.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_popover.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_popup.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_progress.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_radio.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_range.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_reset.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_scaffolding.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_select.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_slide-box.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_tabs.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_toggle.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_type.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_util.scss" />
+    <Content Include="Client\www\lib\ionic\scss\_variables.scss" />
+    <Content Include="Client\www\lib\ionic\version.json" />
+    <None Include="Properties\PublishProfiles\dev.pubxml" />
+    <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>9000</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/postacutehr/app</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

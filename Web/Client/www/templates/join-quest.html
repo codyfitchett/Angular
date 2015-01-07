@@ -1,0 +1,64 @@
+<ion-view  title='<img class="revhr-header-image" src="./images/white_icon.png" />'>
+	<ion-nav-buttons side="left">
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+        <img class="title-image" ng-src="./images/user.png" />
+	</ion-nav-buttons>
+	
+    <ion-content padding="false" class="revhr-join-quest-container">
+
+		<div class="text-center revhr-join-quest-details">
+             <div class="text-right">{{data.totalPoints}} pts</div>
+               <div class="row">
+                   <div class="col">&nbsp;</div>
+                   <div class="col-60">
+                       <div> {{data.name}}</div>
+                   </div> 
+                   <div class="col">&nbsp;</div>  
+               </div> 
+
+               <div class="row">
+                   <div class="col col-center">
+                        <div class="revhr-quest-detail">{{data.checkpoints.length}}</div>
+                        <div>Checkpoints</div>
+                   </div>
+                   <div class="col col-center">
+                       <div> <img class="revhr-quest-image" ng-src="{{data.imageUrl}}" /> </div>
+                   </div> 
+                   <div class="col col-center">
+                       <div class="revhr-quest-detail">{{data.checkinFrequency}}</div>
+                        <div>Check-ins</div>
+                   </div> 
+               </div> 
+
+               <div class="row">
+                   <div class="col col-20">&nbsp;</div>
+                   <div class="col col-60 responsive-sm">
+                       <div class="revhr-quest-detail">{{ timeline() }}</div>
+                        <div>{{ timelineType() }} to Summit</div>
+                   </div> 
+                   <div class="col col-20">&nbsp;</div> 
+               </div> 
+
+        </div>
+		
+		<div class="revhr-quest-desc revhr-join-quest-img-container">
+			<div>Question Description:</div>
+            <ion-scroll>
+			    <div>{{data.description}}</div>
+             </ion-scroll>
+		</div>
+        <div>
+            <div class="revhr-join-quest-sponsor">
+            <b>About the Sponsor:</b>
+            <p>MaximusLife is on mission to make your life the greatest it can be. Quest curators specialize in finding the best way to reach your goals while providing customized inspiration along the way. </p>
+            </div>
+        
+         <button ng-click="showQuestDeclaration()" class="button-small button-block button-light revhr-join-quest-button">
+          Join Quest
+         </button>
+            </div>
+       
+    </ion-content>
+
+</ion-view>

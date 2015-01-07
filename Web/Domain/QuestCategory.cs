@@ -1,0 +1,21 @@
+﻿using ServiceStack.DataAnnotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace RevHR.Web.Domain
+{
+	public class QuestCategory
+	{
+		[AutoIncrement]
+		public long Id { get; set; }
+		[References(typeof(QuestCategory))]
+		public long? ParentId { get; set; }
+		public int SortOrder { get; set; }
+		public bool IsTemplate { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public string ImageUrl { get; set; }
+	}
+}

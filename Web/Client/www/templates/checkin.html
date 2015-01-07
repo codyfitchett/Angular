@@ -1,0 +1,59 @@
+﻿<ion-view title="Check-in: {{data.name}}">
+    <ion-nav-buttons side="left">
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <img class="title-image" ng-src="./images/user.png" />
+    </ion-nav-buttons>
+    <!--<ion-content padding="false"  ng-hide="bCheckinVerify">-->
+    <ion-content padding="false" ng-hide="canShowCheckinVerify()">
+        <div class="revhr-quest-checkin">
+            <div class="row">
+                <span>Current CheckPoint</span>
+            </div>
+            <br />
+            <div class="row">
+                <div class="circle" ng-class="getSelectClass(item)" ng-repeat="item in data.checkpoints | orderBy:'sortOrder'">
+                    <div>{{($index + 1)}}</div>
+                </div>
+            </div>
+            <div class="row">
+                {{ summit() }}
+            </div>
+            <ion-list>
+                <form name="checkinForm" novalidate>
+                    <ion-item class="revhr-checkin-button">
+                        <div class="item item-input">
+                            <div class="rehr-checkin-type" ng-click="model.checkin.CheckinType = 1" ng-class="{selected: model.checkin.CheckinType == 1}">
+                                Weigh-in or <br />BMI Measure
+                            </div>
+                            <div class="rehr-checkin-type" ng-click="model.checkin.CheckinType = 2" ng-class="{selected: model.checkin.CheckinType == 2}">
+                                <div class="rehr-checkin-type-button-workout"> Workout </div>
+                            </div>
+                            <div class="rehr-checkin-type" ng-click="model.checkin.CheckinType = 3" ng-class="{selected: model.checkin.CheckinType == 3}">
+                                <br />Cardio Session
+                            </div>
+                        </div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-checkbox ng-model="model.checkpoint.checkpointWin">Checkpoint Win!</ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                        <textarea class="item" placeholder="Input Comments" rows="2" cols="5" ng-model="model.checkpoint.comment"></textarea>
+                    </ion-item>
+                    <ion-item>                       
+                        <button ng-disabled="checkinForm.$invalid" class="button button-block button-stable" ng-click="saveCheckin()">                            
+                            <span>
+                                Verify <br /> </span>
+                            <span ng-show="needsVerification" class="revhr-checkin-button-via-image">(via Image)</span>                           
+                        </button>                    
+                    </ion-item>
+                    <ion-item ng-show="needsVerification">
+                        <div>
+                            <ion-checkbox ng-model="model.checkpoint.visibleInTimeline">Add to digital Timeline</ion-checkbox>
+                        </div>
+                    </ion-item>
+                </form>
+            </ion-list>
+    </ion-content>
+
+</ion-view>
